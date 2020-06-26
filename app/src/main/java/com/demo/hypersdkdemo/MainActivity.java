@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
                             break;
                         case "initiate_result": {
                             Log.i("HyperSDKInitiate", "initiate_result" + data.optJSONObject("payload"));
-                            updateStringInTextView("\n HyperSDKInitiate: initiate_result -->" + data);
+                            updateStringInTextView("\n HyperSDKInitiate: initiate_result -->\n" + data);
                             break;
                         }
                         case "process_result": {
@@ -155,12 +155,12 @@ public class MainActivity extends AppCompatActivity {
                         // Get the response
                         JSONObject response = data.optJSONObject("payload");
                         Log.i("HyperSDKIsDeviceReady", "initiate_result" + response);
-                        updateStringInTextView("\n HyperSDKIsDeviceReady: initiate_result -->" + data);
+                        updateStringInTextView("\n HyperSDKIsDeviceReady: initiate_result -->\n" + data);
                     } else if (event.equals("process_result")) {
                         // Get the response
                         JSONObject response = data.optJSONObject("payload");
                         Log.i("HyperSDKIsDeviceReady", "payload" + response);
-                        updateStringInTextView("\n HyperSDKIsDeviceReady: process_result -->" + data);
+                        updateStringInTextView("\n HyperSDKIsDeviceReady: process_result -->\n" + data);
                         if (!isLast)
                             hyperSDKIsDeviceReady(true);
                     }
@@ -206,13 +206,13 @@ public class MainActivity extends AppCompatActivity {
                         // Get the response
                         JSONObject response = data.optJSONObject("payload");
                         Log.i("HyperSDKGetUPIApps", "initiate_result" + response);
-                        updateStringInTextView("\n HyperSDKGetUPIApps: initiate_result -->" + data);
+                        updateStringInTextView("\n HyperSDKGetUPIApps: initiate_result -->\n" + data);
                     } else if (event.equals("process_result")) {
                         // Get the response
                         JSONObject response = data.optJSONObject("payload");
                         filterUPIApps(response);
                         Log.i("HyperSDKGetUPIApps", "payload" + response);
-                        updateStringInTextView("\n HyperSDKGetUPIApps: process_result -->" + data);
+                        updateStringInTextView("\n HyperSDKGetUPIApps: process_result -->\n" + data);
                     }
                     // Merchant Code
                 } catch (Exception e) {
