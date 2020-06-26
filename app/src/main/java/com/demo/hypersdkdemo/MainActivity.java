@@ -20,7 +20,6 @@ import in.juspay.services.HyperServices;
 
 public class MainActivity extends AppCompatActivity {
 
-    private String value;
     private HyperServices hyperServices;
     private TextView textView;
     private String merchantId = "TUL_PPRD";
@@ -227,7 +226,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateStringInTextView(String str) {
-//        textView.setText(String.format("%s%s", textView.getText(), str));
         textView.append(str + "\n");
     }
 
