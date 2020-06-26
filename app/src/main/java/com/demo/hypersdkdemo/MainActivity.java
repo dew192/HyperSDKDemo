@@ -18,12 +18,13 @@ import in.juspay.hypersdk.data.JuspayResponseHandler;
 import in.juspay.hypersdk.ui.HyperPaymentsCallbackAdapter;
 import in.juspay.services.HyperServices;
 
+@SuppressWarnings({"IfCanBeSwitch", "deprecation"})
 public class MainActivity extends AppCompatActivity {
 
     private HyperServices hyperServices;
     private TextView textView;
-    private String merchantId = "TUL_PPRD";
-    private String clientId = "TUL_PPRD_android";
+    private static final String merchantId = "TUL_PPRD";
+    private final String clientId = "TUL_PPRD_android";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,12 +53,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void prefetchJuspay() {
         // checking prefetch conditions
-        boolean useBetaAssets = false; // To Discuss with Amol If you want to use beta assets
         JSONObject payload = new JSONObject();
         JSONObject innerPayload = new JSONObject();
         try {
             innerPayload.put("clientId", clientId);
-            payload.put("betaAssets", useBetaAssets);
+            payload.put("betaAssets", false);
             payload.put("payload", innerPayload);
             payload.put("service", "in.juspay.ec"); //juspay service
         } catch (JSONException e) {
@@ -148,8 +148,10 @@ public class MainActivity extends AppCompatActivity {
                     String event = data.getString("event");
                     if (event.equals("show_loader")) {
                         // Show loader
+                        Log.i("HyperSDK", "show_loader");
                     } else if (event.equals("hide_loader")) {
                         // Hide loader
+                        Log.i("HyperSDK", "hide_loader");
                     } else if (event.equals("initiate_result")) {
                         // Get the response
                         JSONObject response = data.optJSONObject("payload");
@@ -199,8 +201,10 @@ public class MainActivity extends AppCompatActivity {
                     Log.i("HyperSDKGetUPIApps", "Data" + data);
                     if (event.equals("show_loader")) {
                         // Show loader
+                        Log.i("HyperSDK", "show_loader");
                     } else if (event.equals("hide_loader")) {
                         // Hide loader
+                        Log.i("HyperSDK", "hide_loader");
                     } else if (event.equals("initiate_result")) {
                         // Get the response
                         JSONObject response = data.optJSONObject("payload");
@@ -221,6 +225,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @SuppressWarnings("unused")
     private void filterUPIApps(JSONObject response) {
 
     }
